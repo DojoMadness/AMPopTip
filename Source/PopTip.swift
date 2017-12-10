@@ -333,7 +333,7 @@ open class PopTip: UIView {
   fileprivate func textBounds(for text: String?, attributedText: NSAttributedString?, view: UIView?, with font: UIFont, padding: CGFloat, edges: UIEdgeInsets, in maxWidth: CGFloat) -> CGRect {
     var bounds = CGRect.zero
     if let text = text {
-      bounds = NSString(string: text).boundingRect(with: CGSize(width: maxWidth, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+      bounds = NSString(string: text).boundingRect(with: CGSize(width: maxWidth, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
     }
     if let attributedText = attributedText {
       bounds = attributedText.boundingRect(with: CGSize(width: maxWidth, height: CGFloat.infinity), options: .usesLineFragmentOrigin, context: nil)
@@ -462,10 +462,10 @@ open class PopTip: UIView {
     
     paragraphStyle.alignment = textAlignment
     
-    let titleAttributes: [NSAttributedStringKey : Any] = [
-      NSAttributedStringKey.paragraphStyle: paragraphStyle,
-      NSAttributedStringKey.font: font,
-      NSAttributedStringKey.foregroundColor: textColor
+    let titleAttributes: [String : Any] = [
+      NSParagraphStyleAttributeName: paragraphStyle,
+      NSFontAttributeName: font,
+      NSForegroundColorAttributeName: textColor
     ]
     
     if let text = text {
